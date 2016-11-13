@@ -1,0 +1,16 @@
+package com.listapp.service;
+
+import java.util.List;
+
+import com.listapp.domain.Org;
+
+public interface ListService {
+    /**
+     * Generates List of organizations and inserts into a Model
+     */
+    List<Org> getList();
+    String createOrg(Org org);
+    String deleteById(long id);
+    String getByName(String name);
+    String updateName(long id, String name);
+}
