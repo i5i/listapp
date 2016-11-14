@@ -6,7 +6,7 @@ import com.listapp.domain.Org;
 
 public interface ListService {
     /**
-     * Generates List of organizations and inserts into a Model
+     * Generates List of organizations
      */
     List<Org> getList();
     String createOrg(Org org);
