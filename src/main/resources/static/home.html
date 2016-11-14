@@ -1,65 +1,69 @@
-<h1>ListApp</h1>
 <div ng-show="authenticated">
-   <div ng-hide="!controller.rest.list.length">
-   <input type="text" class="form-control" placeholder="Search" ng-model="searchOrg">
-   <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>
-  		<a href="#/" ng-click="sortType = 'id'; sortReverse = !sortReverse">
-            ID 
-        <span ng-show="sortType == 'id' && !sortReverse">/\</span>
-        <span ng-show="sortType == 'id' && sortReverse">\/</span></a>
-        </th>
-        <th><a href="#/" ng-click="sortType = 'name'; sortReverse = !sortReverse">
-            Name 
-        <span ng-show="sortType == 'name' && !sortReverse">/\</span>
-        <span ng-show="sortType == 'name' && sortReverse">\/</span></a></th>
-        <th><a href="#/" ng-click="sortType = 'type'; sortReverse = !sortReverse">
-            Type 
-        <span ng-show="sortType == 'type' && !sortReverse">/\</span>
-        <span ng-show="sortType == 'type' && sortReverse">\/</span></a></th>
-        <th><a href="#/" ng-click="sortType = 'location'; sortReverse = !sortReverse">
-            Location
-        <span ng-show="sortType == 'location' && !sortReverse">/\</span>
-        <span ng-show="sortType == 'location' && sortReverse">\/</span></a></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="item in controller.rest.list| orderBy:sortType:sortReverse | filter:searchOrg">
-      	<td>{{item.id}}</td>
-      	<td>{{item.name}}</td>
-      	<td>{{item.type}}</td>
-      	<td>{{item.location}}</td>
-      </tr>        
-    </tbody>
-    </table>
+	<div class="top20">
+    	<button ng-click="collapse=!collapse" class="btn btn-default">
+    	<span ng-show="collapse==true">-</span>
+    	<span ng-show="collapse!=true">+</span>
+    	Add</button>
+        <br>
+	    <div ng-show="collapse" class="well">
+	    	<form novalidate  class="form-inline">
+	    	<div class="form-group">
+	    		<label for="name">Name:</label>
+	    		<input type="name" class="form-control" id="name" ng-model="org.name">
+	  		</div>
+	   		<div class="form-group">
+	    		<label for="type">Type:</label>
+	    		<input type="type" class="form-control" id="type" ng-model="org.type">
+	  		</div>
+	  		<div class="form-group">
+	    		<label for="location">Location:</label>
+	    		<input type="location" class="form-control" id="location" ng-model="org.location">
+	  		</div>
+			<button ng-click="controller.send()" class="btn btn-default">Submit</button>
+	  	</form>
+	  	</div>
+  	</div>
+    <div ng-hide="!controller.rest.list.length" class="home center-block top20">
+   		<input type="text" class="form-control" placeholder="Search" ng-model="searchOrg">
+   		<table class="table table-condensed">
+    	<thead>
+      		<tr>
+        	<th>
+  				<a href="#/" ng-click="sortType = 'id'; sortReverse = !sortReverse">
+            	ID 
+        		<span ng-show="sortType == 'id' && !sortReverse">/\</span>
+        		<span ng-show="sortType == 'id' && sortReverse">\/</span></a>
+        	</th>
+        	<th>
+        		<a href="#/" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+            	Name 
+        		<span ng-show="sortType == 'name' && !sortReverse">/\</span>
+       			<span ng-show="sortType == 'name' && sortReverse">\/</span></a></th>
+        	<th>
+        		<a href="#/" ng-click="sortType = 'type'; sortReverse = !sortReverse">
+            	Type 
+        		<span ng-show="sortType == 'type' && !sortReverse">/\</span>
+        		<span ng-show="sortType == 'type' && sortReverse">\/</span></a></th>
+        	<th>
+        		<a href="#/" ng-click="sortType = 'location'; sortReverse = !sortReverse">
+            	Location
+        		<span ng-show="sortType == 'location' && !sortReverse">/\</span>
+        		<span ng-show="sortType == 'location' && sortReverse">\/</span></a>
+        	</th>
+      		</tr>
+    	</thead>
+	    <tbody>
+	      <tr ng-repeat="item in controller.rest.list| orderBy:sortType:sortReverse | filter:searchOrg">
+	      	<td>{{item.id}}</td>
+	      	<td>{{item.name}}</td>
+	      	<td>{{item.type}}</td>
+	      	<td>{{item.location}}</td>
+	      </tr>        
+	    </tbody>
+	</table>
     </div>
-    <div>
-    <a ng-click="collapse=!collapse" class="btn btn-default">
-    <span ng-show="collapse==true">-</span>
-    <span ng-show="collapse!=true">+</span>
-    Add</a>
-    <br>
-    <div ng-show="collapse" class="well">
-    <form novalidate  class="form-inline">
-    <div class="form-group">
-    <label for="name">Name:</label>
-    <input type="name" class="form-control" id="name" ng-model="org.name">
-  	</div>
-    <div class="form-group">
-    <label for="type">Type:</label>
-    <input type="type" class="form-control" id="type" ng-model="org.type">
-  	</div>
-  	<div class="form-group">
-    <label for="location">Location:</label>
-    <input type="location" class="form-control" id="location" ng-model="org.location">
-  	</div>
-	<button ng-click="controller.send()" class="btn btn-default">Submit</button>
-  	</form>
-  	</div>
-  	</div>
 </div>
 <div  ng-show="!authenticated">
+	<h1>ListApp</h1>
 	<p>Login to edit organization list</p>
 </div>
