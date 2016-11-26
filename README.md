@@ -6,5 +6,7 @@ Simple CRUD application with an in memory databae for testing Spring Boot and An
 launch via console with the command: mvn spring-boot:run
 
 default login:
+
 username:username
+
 password:password
